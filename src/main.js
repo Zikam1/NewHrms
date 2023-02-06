@@ -16,7 +16,7 @@ import axios from "axios"
 
 const app = createApp(App)
 
-axios.defaults.baseURL = "https://192.168.0.154:45455/api"
+axios.defaults.baseURL = "https://192.168.1.60:45455/api"
 
 store
 	.dispatch("appStore/attemptSignIn", localStorage.getItem("accessToken"))
