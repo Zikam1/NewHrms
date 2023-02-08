@@ -36,6 +36,13 @@
 				</button>
 			</form>
 
+
+			<div href="#" class="notification">
+  				<span>Inbox</span>
+  					<span class="badge">3</span>
+			</div>
+
+
 			<!-- For manager to view leave information of team members under the manager -->
 			<button
 				@click="handleManagerOpenLeaveInfo"
@@ -208,6 +215,32 @@ header .project-title {
 .active-directory {
 	margin-block: 1rem;
 }
+.notification {
+  background-color: rgb(1, 6, 22);
+  color: white;
+  text-decoration: none;
+  padding: 10px 13px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+  margin-left: 280px;
+}
+
+.notification:hover {
+  background: red;
+}
+
+.notification .badge {
+  position: absolute;
+  
+  top: -10px;
+  right: 0px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: rgb(0, 68, 255);
+  color: white;
+}
+
 
 @media (max-width: 980px) {
 	.project-title h2 {
