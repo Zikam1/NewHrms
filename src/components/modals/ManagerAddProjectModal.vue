@@ -3,7 +3,11 @@
 		<form @submit.prevent="addManagerProject">
 			<h2 class="section-title">Create project</h2>
 			<div>
-				<TextInput label="Project title" placeholder="Project..." />
+				<TextInput
+				 label="Project title" 
+				 placeholder="Project..." 
+				@update-value="(date) => (projectTitle = data)"
+				/>
 			</div>
 
 			<div class="input-flex">
@@ -15,9 +19,24 @@
 						<option value="not-started">Not started</option>
 					</select>
 				</div>
-				<div>
+				<!-- <div>
 					<TextInput label="Team Lead" placeholder="John Stephen" />
-				</div>
+				</div> -->
+			</div>
+
+			<div>
+				<label class="form-label" for="teamLead">Team Lead</label>
+				<select v-model="teamLeadId" name="teamLead" id="teamLead">
+				<option
+				v-for="collaborator in allCollaborators"
+				:key="collaborator.id"
+				:value="collaborator.id"
+				>
+				{{ collaborator.name }}
+			</option>
+		</select>
+	</div>
+		<div>
 			</div>
 
 			<div class="add-collaborator-container">
@@ -27,13 +46,27 @@
 				>
 					Add
 				</button>
-				<TextInput
+				<!-- <TextInput
 					label="Other members"
 					placeholder="Jane Doe"
 					@update-value="updateCollaborator"
 					clearOnFocus
-				/>
+				/> -->
 
+				<select
+				v-model="selectedollaborator"
+				name="collaborator"
+				id="collaborator"
+				>
+			<option
+			v-for="collaborator in collaborators"
+			:key="collaborator.id"
+			:value="collaborator"
+			>
+		{{ collaborator.name }}
+	</option>
+			</select>
+				
 				<article
 					v-if="collaborators.length"
 					class="other-collaborators"
@@ -139,9 +172,9 @@ form .input-flex > div {
 }
 
 .add-collaborator-btn {
-	position: absolute;
+	/* position: absolute;
 	top: -5px;
-	right: 0;
+	right: 0; */
 	background-color: #192041;
 	padding: 0.3em 0.7em;
 	border-radius: 4px;
@@ -195,5 +228,12 @@ form .input-flex > div {
 	align-items: center;
 	gap: 5px;
 	padding-inline: 2em;
+}
+.add-experience-modal {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	justify-content: center;
 }
 </style>
